@@ -6,8 +6,6 @@ FASTLED_USING_NAMESPACE
 #warning "Requires FastLED 3.1 or later; check github for latest code."
 #endif
 
-#define BRIGHTNESS         20
-
 // function prototypes
 void fire(CRGB *gArray, int gSize);
 void outrun(CRGB *gArray, int gSize);
@@ -80,7 +78,7 @@ void outrun(CRGB *gArray, int gSize)
   int pos1 = (lastPos > currentPos) ? ((gSize / 2) - currentPos) : currentPos;
   int pos2 = (gSize - 1) - pos1;
 
-  CRGB color = ColorFromPalette(outrunPalette, gHue, BRIGHTNESS, LINEARBLEND);
+  CRGB color = ColorFromPalette(outrunPalette, gHue, FastLED.getBrightness(), LINEARBLEND);
   gArray[pos1] += color;
   gArray[pos2] += color;
 

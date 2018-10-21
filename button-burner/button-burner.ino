@@ -14,7 +14,6 @@
 
 #include "patterns.h"
 
-/*#define PIN_LEDARRAY     5*/
 #define PIN_LEDARRAY1    5
 #define PIN_LEDARRAY2    6
 #define PIN_BUTTON       3
@@ -22,7 +21,7 @@
 #define LED_TYPE           WS2812B
 #define COLOR_ORDER        GRB
 #define NUM_LEDS           24
-
+#define BRIGHTNESS         20
 #define FRAMES_PER_SECOND  30
 #define TOGGLE_INTERVAL    2000 // milliseconds
 
@@ -34,8 +33,6 @@ SimplePatternList gPatterns[] = { fire, outrun, rainbow, rainbowWithGlitter, con
 
 CRGB leds_array[NUM_LEDS];
 unsigned int gArray_PatternNumber = 0;
-/*unsigned int gHue = 0; // rotating "base color" used by many of the patterns
-unsigned int gBlinky = 0;*/
 bool ledpower;
 bool state_toggle;
 unsigned int state_now;
@@ -55,7 +52,6 @@ void setup() {
   time_start = millis();
   time_interval = 0;
 
-  //FastLED.addLeds<LED_TYPE, PIN_LEDARRAY, COLOR_ORDER>(leds_array, NUM_LEDS).setCorrection(TypicalLEDStrip);
   FastLED.addLeds<LED_TYPE, PIN_LEDARRAY1, COLOR_ORDER>(leds_array, NUM_LEDS).setCorrection(TypicalLEDStrip);
   FastLED.addLeds<LED_TYPE, PIN_LEDARRAY2, COLOR_ORDER>(leds_array, NUM_LEDS).setCorrection(TypicalLEDStrip);
   FastLED.setBrightness(BRIGHTNESS);
